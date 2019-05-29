@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+<title>Pagina Listagem</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+</head>
+<body>
+
+	<table class="table table-dark">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "pessoa : ${listaPessoas}">
+				<td th:text = "${pessoa.codigo}"> </td>
+				<td th:text = "${pessoa.nome}"> </td>
+				<td th:text = "${pessoa.time}"> </td>
+				<td><a th:href="@{/pessoa/excluir/{codigo}(codigo=${pessoa.codigo})}"> <button type="button" class="btn btn-danger">Excluir</button></a></a></td>
+				<td><a th:href="@{/pessoa/atualizar/{codigo}(codigo=${pessoa.codigo})}" ><button type="button" class="btn btn-primary">Atualizar</button></a></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<a href="/pessoa/formulario" ><button>Clique para Adicionar</button></a>
+
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
